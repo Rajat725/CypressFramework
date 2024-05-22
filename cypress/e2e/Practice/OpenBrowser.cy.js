@@ -16,6 +16,7 @@ describe('Open Browser', () => {
 
       cy.visit('https://www.makemytrip.com/',
       {headers:{"Accept-Encoding": "gzip, deflate"}});
+      cy.url().should('')
   
       
       
