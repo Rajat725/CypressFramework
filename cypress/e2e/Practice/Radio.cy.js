@@ -1,6 +1,6 @@
 describe('Radio Buttons Suites',()=>{
     it('Radio Button Tests-1',()=>{
-        cy.visit('https://testautomationpractice.blogspot.com/',{timeout:10000});
+        cy.visit('https://testautomationpractice.blogspot.com/');
         cy.title().should('eq','Automation Testing Practice');
         cy.get('#male').as('Male');
         cy.get('#female').as('Female')
@@ -9,7 +9,7 @@ describe('Radio Buttons Suites',()=>{
         cy.get('@Female').check();
         cy.get('@Female').should('be.checked');
         cy.get('@Male').should('not.be.checked');
-        cy.get('.form-check.form-check.form-check-inline').check();
+        cy.get("input[type='checkbox']").check();
 
     })
 })
