@@ -21,21 +21,37 @@ describe('Child Windoes Siites',()=>{
            .should('have.text','New Window');
     })
 
-    it.only('Child Window Test #003',()=>{
-        let text;
-        cy.visit('https://the-internet.herokuapp.com/windows/new');
-        cy.get("div[class='example'] h3")
-        .invoke('text')
-        .then((elText) => {
-          text = elText;
-          cy.log(text);
+    it('Child Window Test #003',()=>{
+      
+        cy.visit('https://rahulshettyacademy.com/AutomationPractice/');
+        cy.get('#opentab').then((el)=>{
+            const newURL=el.prop('href');
+            cy.visit(newURL);
+            cy.origin(newURL,()=>{
+                cy.get("div[class='button float-left']>a[class='main-btn']")
+                .should('have.text','Access all our Courses');
+                cy.visit('https://rahulshettyacademy.com/AutomationPractice/');
+            })
+            cy.url().should('contain','rahulshettyacademy');
+           
         });
 
-        cy.log(text);
-        cy.origin('https://testautomationpractice.blogspot.com/',()=>{
-
-        cy.get("#name").type(text);
-        })
-
     })
+
+    it('Child Window Test #004',()=>{
+      
+        cy.visit('https://rahulshettyacademy.com/AutomationPractice/');
+        cy.get('#openwindow').click();
+        const newURL='https://www.qaclickacademy.com/';
+        cy.visit(newURL);
+        cy.origin(newURL,()=>{
+                cy.get("div[class='button float-left']>a[class='main-btn']")
+                .should('have.text','Access all our Courses');
+                cy.visit('https://rahulshettyacademy.com/AutomationPractice/');
+            })
+        cy.url().should('contain','rahulshettyacademy');
+           
+        });
+
+    
 })
