@@ -33,4 +33,11 @@ describe('DropdownsSuites',()=>{
         })
 
     })
+
+    it.only("Test Drpdonw #003",()=>{
+        cy.visit('https://rahulshettyacademy.com/AutomationPractice/');
+        cy.get('#autocomplete').type("Indi");
+        cy.get(".ui-menu-item").should("be.visible");
+        cy.get('#autocomplete').type('{downarrow}').type('{enter}').blur();
+    })
 })
